@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include "math.h"
-//Доданий коментар
+
 using namespace std;
 
 int main()
