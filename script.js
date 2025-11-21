@@ -42,7 +42,7 @@ style.textContent = `
     }
     
     #answer {
-        font-size: 30px;
+        font-size: 16px;
         margin-top: 20px;
         font-family: 'Press Start 2P', cursive;
     }
@@ -99,4 +99,5 @@ function ask() {
 btn.addEventListener("click", ask);
 question.addEventListener("keydown", e => {
     if (e.key === "Enter") ask();
+
 });
