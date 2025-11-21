@@ -41,6 +41,21 @@ style.textContent = `
         box-shadow: 0 0 40px rgb(0, 102, 255);
     }
     
+    .ball {
+        position: relative;
+        width: min(80vw, 500px);
+        height: min(80vw, 500px);
+        max-width: 500px;
+        max-height: 500px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.06), rgba(0,0,0,0.5));
+        box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+        overflow: hidden;
+    }
+    
     #answer {
         font-size: 16px;
         margin-top: 20px;
@@ -101,3 +116,4 @@ question.addEventListener("keydown", e => {
     if (e.key === "Enter") ask();
 
 });
+
