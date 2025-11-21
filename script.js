@@ -1,4 +1,5 @@
-﻿const googleFont = "https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap";
+const googleFont = "https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap";
+
 const link = document.createElement("link");
 link.rel = "stylesheet";
 link.href = googleFont;
@@ -6,62 +7,76 @@ document.head.appendChild(link);
 
 const style = document.createElement("style");
 style.textContent = `
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background-color: #9e9e9e;
-    }
-    
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    input {
-        width: 400px;
-        height: 20px;
-        margin: 30px;
-        padding: 5px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        font-family: 'Press Start 2P', cursive;
-        text-align: center;
-        border-radius: 30px;
-    }
-    
-    button {
-        border-radius: 100%;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(circle, #0097ff, #0066ff, rgba(0, 35, 166, 0.98));
-        box-shadow: 0 0 40px rgb(0, 102, 255);
-    }
-    
-    .ball {
-        position: relative;
-        width: min(80vw, 500px);
-        height: min(80vw, 500px);
-        max-width: 500px;
-        max-height: 500px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.06), rgba(0,0,0,0.5));
-        box-shadow: 0 20px 40px rgba(0,0,0,0.45);
-        overflow: hidden;
-    }
-    
-    #answer {
-        font-size: 16px;
-        margin-top: 20px;
-        font-family: 'Press Start 2P', cursive;
-    }
+	body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		margin: 0;
+		background-color: #9e9e9e;
+	}
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		padding: 10px;
+		box-sizing: border-box;
+	}
+
+	input {
+		width: min(90vw, 400px);
+		height: 28px;
+		margin: 20px 0;
+		padding: 8px;
+		font-size: clamp(12px, 3.5vw, 16px);
+		border: 1px solid #ccc;
+		font-family: 'Press Start 2P', cursive;
+		text-align: center;
+		border-radius: 30px;
+		box-sizing: border-box;
+	}
+
+	button {
+		border-radius: 100%;
+		width: min(80vw, 500px);
+		height: min(80vw, 500px);
+		background: radial-gradient(circle, #0097ff, #0066ff, rgba(0, 35, 166, 0.98));
+		box-shadow: 0 0 40px rgb(0, 102, 255);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0;
+		border: none;
+	}
+	
+	.ball {
+		position: relative;
+		width: min(80vw, 500px);
+		height: min(80vw, 500px);
+		max-width: 500px;
+		max-height: 500px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.06), rgba(0,0,0,0.5));
+		box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+		overflow: hidden;
+	}
+
+	#answer {
+		font-size: clamp(10px, 4vw, 20px);
+		text-align: center;
+		width: 70%;
+		margin: 0;
+		font-family: 'Press Start 2P', cursive;
+		line-height: 1.4;
+		word-break: break-word;
+	}
 `;
+
 document.head.appendChild(style);
 
 const container = document.createElement("main");
@@ -89,31 +104,29 @@ container.appendChild(btn);
 document.body.appendChild(container);
 
 const answersList = [
-    "Так",
-    "Ні",
-    "Можливо",
-    "Запитай пізніше",
-    "Шанси хороші",
-    "Не розраховуй на це",
-    "Однозначно так",
-    "Виглядає сумнівно",
-    "Схоже на правду",
-    "Краще не знати відповіді"
+	"Так",
+	"Ні",
+	"Можливо",
+	"Запитай пізніше",
+	"Шанси хороші",
+	"Не розраховуй на це",
+	"Однозначно так",
+	"Виглядає сумнівно",
+	"Схоже на правду",
+	"Краще не знати відповіді"
 ];
 
 function ask() {
-    const v = question.value.trim();
-    if (!v.includes("?")) {
-        answer.textContent = "";
-        return;
-    }
-    const idx = Math.floor(Math.random() * answersList.length);
-    answer.textContent = answersList[idx];
+	const v = question.value.trim();
+	if (!v.includes("?")) {
+		answer.textContent = "";
+		return;
+	}
+	const idx = Math.floor(Math.random() * answersList.length);
+	answer.textContent = answersList[idx];
 }
 
 btn.addEventListener("click", ask);
 question.addEventListener("keydown", e => {
-    if (e.key === "Enter") ask();
-
+	if (e.key === "Enter") ask();
 });
-
