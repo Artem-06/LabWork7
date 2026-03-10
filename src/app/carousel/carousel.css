@@ -1,6 +1,6 @@
 /* Background & Filter Settings */
 .slide {
-  background-image: url('../public/CHMNU.jpg');
+  background-image: url('/CHMNU.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
